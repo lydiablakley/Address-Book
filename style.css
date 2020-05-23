@@ -1,0 +1,128 @@
+footer h4 {
+    font-family: 'Alfa Slab One', cursive; 
+}
+
+footer p {
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-family: 'Alfa Slab One', cursive;  
+}
+
+
+h3, info h3 {
+    font-family: 'Alfa Slab One', cursive;
+}
+
+.masthead h1 {
+    font-family: 'Alfa Slab One', cursive;  
+    color: #FFFFFF;
+    font-size: 56px;
+}
+
+.masthead {
+    height: 100vh;
+    min-height: 500px;
+    background-image: linear-gradient(to top left,#4EC9CC,#2F4858);
+    background-size: cover;
+    opacity:.9;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+img #icon {
+    max-width: 150px;
+}
+
+#logo {
+    max-width: 70%;
+}
+
+.card {
+    padding: 50px;
+
+}
+
+.row {
+    padding-top: 100px;
+}
+
+.row .results {
+    padding-bottom: 50px;
+}
+
+
+footer {
+    background-image: linear-gradient(to top left,#4EC9CC,#2F4858);
+    background-size: cover;
+    opacity:.9;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 50px;
+}
+
+.results {
+    padding-bottom: 50px;
+}
+
+#myInput {
+  background-position: 10px 12px; 
+  background-repeat: no-repeat; 
+  width: 70%;
+  border: 1px solid #ddd; 
+  margin-bottom: 20px; 
+}
+
+#myTable {
+  border-collapse: collapse; 
+  width: 100%;
+}
+
+#myTable th, #myTable td {
+  text-align: left; 
+  padding: 12px; 
+}
+
+
+.user-img {
+    position:relative;
+    width:200px;
+    height:200px;
+    overflow:hidden;
+    border-radius:50%;
+    border: black 2px solid;
+    margin-bottom: 20px;
+}
+
+.user-img img{
+    width:100%;
+    height:auto;
+    padding:5px;
+}
+
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.myTable tbody {
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+}
+
+.myTable thead,tbody,tr,td,th {
+    display:block;
+}

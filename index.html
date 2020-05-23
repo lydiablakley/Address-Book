@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+ <!--- JSON SCRIPTS --->
+    
+  <link rel="stylesheet" href="address.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="gulp.js"></script>
+<script src="https://rawgit.com/iamdanfox/anno.js/gh-pages/dist/anno.js" type="text/javascript"></script>
+	
+    <script src="https://rawgit.com/litera/jquery-scrollintoview/master/jquery.scrollintoview.js" type="text/javascript"></script>
+	
+    <link href="https://rawgit.com/iamdanfox/anno.js/gh-pages/dist/anno.css" rel="stylesheet" type="text/css" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+     <title>Lookup</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Lydia Blakely and Colm Mullan"> <!--Author-->
+    <meta name="description" content="Assignment 2 - COM601"> <!-- Description-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Viewport-->  
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/> <!--Stylesheet Link-->
+    
+                
+    
+    
+    
+
+<!--Bootstrap 4-->
+    
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+<!--Google Fonts API-->
+<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans:300&display=swap" rel="stylesheet"> 
+    
+<!--jQuery Script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="scripts/scripts.js"></script>
+<script type="text/javascript" src="scripts/address.js"></script> 
+    
+<script> 
+    $(document).ready(function() {
+    var user = null;
+    var pass = null;
+        
+
+        
+        
+    $('#sendData').click(function() {
+        newKey = $('#key').val();
+        newValue = $('#value').val();
+        newstreetAddress = $('#streetAddress').val();
+        newcity = $('#city').val();
+        newcountry = $('#country').val();
+        newzipCode = $('#zipCode').val();
+        newemail = $('#email').val()
+
+        $.post('/postData', {
+        key: newKey,
+        value: newValue,
+        streetAddress: newstreetAddress,
+        city: newcity,
+        country: newcountry,
+        zipCode: newzipCode,
+        email: newemail
+
+        }, function(data) {
+        console.log('Data successfully posted - ' + newKey + '' + newValue + '' + newstreetAddress + '' + newcountry + '' + newcity + '' + newzipCode + '' + newemail);
+
+        alert('Data Posted');
+        });
+    }); 
+    });
+    
+    
+
+  /// DISPLAYS JSON DATA
+    
+    $(document).ready(function() {
+    $('#getData').click(function() {
+    $.get('/getData', function(data){
+    $('#textDisplay').val('');
+    $('#textDisplay').val(JSON.stringify(data));
+        console.log('Data successfully retrieved');
+    });
+    });
+    });
+    
+  
+    
+    </script>  
+    
+    <script>
+    $(document).ready(function(){
+            var intro = new Anno([
+                {
+                target: "#searchsection",
+                    content: "Type your contact in here to search for them"
+                },
+
+                {
+                    target: "#resultssection",
+                    content: "Click on a contact to view them"
+                },
+            ]);
+            $('#help').on("click", function(){
+                   intro.show();   
+            });
+        });</script>    
+    </head> 
+    
+
+           
+    <body>
+           
+       <!--Responsive Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="images/lookuplogo.png" id="logo" class="img-fluid" alt="Look Up Logo">
+        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#" id="link"><p>Home</p></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#about" id="link"><p>About</p></a>
+        </li>
+        <li class="nav-item" id="searchtour">
+            <a class="nav-link" href="#search" id="link"><p>Search</p></a>
+        </li>
+         
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+<!--Masthead-->
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1>Lookup</h1>
+                <p id="caption">Find anyone, anywhere, anytime. Simple</p><br>
+                <button id="help" class="btn btn-outline-dark">Help</button>
+            </div>
+            
+        </div>
+    </div>
+</header>
+<br><br><br>
+
+<!--About-->
+<section class="about" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h3 class="card-title">Find</h3>
+                    <p class="card-text">Find who you're looking for, just type in the search bar below</p>
+                    <img class="rounded mx-auto d-block img-fluid" id="icon" src="images/icons8-binoculars.svg" alt="Find">
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h3 class="card-title">Learn</h3>
+                    <p class="card-text">Read up on details about someone and see what they look like</p>
+                    <img class="rounded mx-auto d-block" id="icon" src="images/icons8-info.svg" alt="Learn">
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h3 class="card-title">Edit</h3>
+                    <p class="card-text">Something you searched need edited? <br><i>No problem.</i> Update below</p>
+                    <img class="rounded mx-auto d-block" id="icon" src="images/icons8-edit.svg" alt="Edit">
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <br><br><br>
+</section>
+       
+<!--Search-->
+               
+<section class="search" id="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 id="searchsection" class="searchsection">Search</h1>
+                <p>Type a name you wish to search in the search bar below</p>
+
+                <a class="test" data-toggle="tooltip" data-placement="top" title="Type in only letters to see results appear" id="tooltip">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." required><br></a>
+                <button type="button" class="btn btn-outline-dark" onclick="sortTable()">Sort A-Z</button>  
+                <button type="button" class="btn btn-outline-dark" id="addbtn">Add Contact</button>
+                <br><br><br>
+                    <button type="button" class="btn btn-outline-dark" id="close">Close</button>
+            </div>
+        </div>
+    </div>   
+</section>
+<br><br><br>
+            
+               
+    <!--- ADD FORM --->
+ <section class="form" id="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                
+<div class="addform" id="addform">    
+
+<input type="text" id='key' size="40"/ placeholder="Firstname">
+<br>
+<input type="text" id='value' size="40"/ placeholder="Lastname">
+<br>
+<input type="text" id='streetAddress' size="40"/ placeholder="Street Address">
+<br>
+<input type="text" id='city' size="40"/ placeholder="City">
+<br>
+<input type="text" id='country' size="40"/ placeholder="Country">
+<br>
+<input type="text" id='zipCode' size="40"/ placeholder="PostCode">
+<br>
+<input type="text" id='email' size="40"/ placeholder="Email Address">
+     
+  <br><br> 
+    <button id="sendData" class="btn btn-outline-dark">Add</button>
+  <br>
+<br />
+<textarea rows="10" cols="120" id="textDisplay"></textarea>
+<br /><br>
+    <input type="button" class="btn btn-outline-dark" id='getData' value='Show Data'>
+  
+               </div>
+                </div>
+            </div>
+        </div>
+</section>             
+
+<br />
+
+<!--Results-->
+<section class="results">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 text-center">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="info">
+                            <h3 id="firstName" class="card-title">Joe Bloggs</h3>
+                            <p id="citycard" class="card-text">Belfast, Northern Ireland<p>
+                            <p id="country" class="card-text"></p>
+
+
+                            <h3 id="firstName2" class="card-title"></h3>
+                            <p id="streetaddress2" class="card-text"></p>
+                            <p id="city2" class="card-text"></p>
+                            <p id="country2" class="card-text"></p>
+                            <p id="postcode2" class="card-text"></p>
+                            <p id="email2" class="card-text"></p>
+                        </div>  
+                    </div>
+                </div>
+             </div>
+            <div class="col-sm-6 text-center">
+                 <div id="results"></div><!--Not working-->
+                <div id="resultssection">
+                <table id="myTable">
+                    <tbody>
+                    <thead><tr class="header"><th>Results</th></tr>
+                    </thead>
+                    </tbody>
+                </table>            
+            </div>
+        </div>   
+    </div>
+    </div>
+</section>
+
+        
+<!--Footer-->
+<footer>
+    <div class="container text-sm-left">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4 id="more">Find Out More</h4>
+            <a href="#"><p>Home</p></a>
+                <a href="#about"><p>About</p></a>
+                <a href="#search"><p>Search</p></a>
+                <a href="#add"><p>Add</p></a>
+            </div>
+            <div class="col-sm-6">
+                <h4>Contact Us</h4>
+                <p>17 Botanic Avenue, Belfast</p>
+                <p>lookup@info.com</p>
+                <p>+ 01 234 567 88</p>
+            </div>
+        </div>
+    </div>
+</footer>
+               
+   
+        
+
+</body>
+</html>
